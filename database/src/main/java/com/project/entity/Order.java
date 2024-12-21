@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Table(name = "product")
+@Table(name = "order")
 @Entity
 @Getter
 @Setter
@@ -21,8 +21,8 @@ public class Order extends BaseEntity {
     @Column(unique = true, nullable = false)
     private UUID referenceId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "email", nullable = false) // Foreign key to User
-    private User user;  // here we are using email as user id
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
     private BigDecimal amount;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;

@@ -23,7 +23,7 @@
             <column name="reference_id" type="UUID">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="user_id" type="VARCHAR(255)">
+            <column name="user_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="amount" type="DECIMAL(10, 2)">
@@ -35,7 +35,7 @@
         </createTable>
         <addForeignKeyConstraint
                 baseTableName="order" baseColumnNames="user_id"
-                referencedTableName="user" referencedColumnNames="email"
+                referencedTableName="user" referencedColumnNames="id"
                 onDelete="CASCADE" constraintName="fk_order_user_id"/>
         <createIndex indexName="idx_order_reference_id" tableName="order">
             <column name="reference_id"/>

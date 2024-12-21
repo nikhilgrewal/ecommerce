@@ -20,10 +20,10 @@
             <column name="version" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
-            <column name="order_reference_id" type="UUID">
+            <column name="order_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="product_reference_id" type="UUID">
+            <column name="product_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="quantity" type="INTEGER">
@@ -34,19 +34,19 @@
             </column>
         </createTable>
         <addForeignKeyConstraint
-                baseTableName="order_product" baseColumnNames="order_reference_id"
-                referencedTableName="order" referencedColumnNames="reference_id"
-                onDelete="CASCADE" constraintName="fk_order_product_order_reference_id"/>
+                baseTableName="order_product" baseColumnNames="order_id"
+                referencedTableName="order" referencedColumnNames="id"
+                onDelete="CASCADE" constraintName="fk_order_product_order_id"/>
         <addForeignKeyConstraint
-                baseTableName="order_product" baseColumnNames="product_reference_id"
-                referencedTableName="product" referencedColumnNames="reference_id"
-                onDelete="CASCADE" constraintName="fk_order_product_product_reference_id"/>
+                baseTableName="order_product" baseColumnNames="product_id"
+                referencedTableName="product" referencedColumnNames="id"
+                onDelete="CASCADE" constraintName="fk_order_product_product_id"/>
 
-        <createIndex indexName="idx_order_product_order_reference_id" tableName="order_product">
-            <column name="order_reference_id"/>
+        <createIndex indexName="idx_order_product_order_id" tableName="order_product">
+            <column name="order_id"/>
         </createIndex>
         <createIndex indexName="idx_order_product_product_id" tableName="order_product">
-            <column name="product_reference_id"/>
+            <column name="product_id"/>
         </createIndex>
     </changeSet>
 
