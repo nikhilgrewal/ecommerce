@@ -4,6 +4,7 @@ import com.project.ProductPropertyHolder;
 import com.project.dao.ProductView;
 import com.project.queryservice.ProductQueryService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class ProductStockMonitoringService {
     private final ProductPropertyHolder productPropertyHolder;
     private final NotificationService notificationService;
 
+    @Autowired
     public ProductStockMonitoringService(ProductQueryService productQueryService, ProductPropertyHolder productPropertyHolder, NotificationService notificationService) {
         this.productQueryService = productQueryService;
         this.productPropertyHolder = productPropertyHolder;

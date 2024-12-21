@@ -5,6 +5,7 @@ import com.project.dao.OrderStatus;
 import com.project.dao.OrderView;
 import com.project.queryservice.OrderQueryService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class OrderFulfillmentReminderService {
     private final NotificationService notificationService;
     private final OrderPropertyHolder orderPropertyHolder;
 
+    @Autowired
     public OrderFulfillmentReminderService(OrderQueryService orderQueryService, NotificationService notificationService, OrderPropertyHolder orderPropertyHolder) {
         this.orderQueryService = orderQueryService;
         this.notificationService = notificationService;
