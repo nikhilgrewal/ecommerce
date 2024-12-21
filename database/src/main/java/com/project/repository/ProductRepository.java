@@ -16,7 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Optional<Product> findByReferenceId(UUID referenceID);
 
-    @Query("SELECT p FROM Product p WHERE p.isDeleted = false AND " +
+    @Query("SELECT p FROM Product p WHERE p.deleted = false AND " +
             "(:name IS NULL OR LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
             "(:minPrice IS NULL OR p.price >= :minPrice) AND " +
             "(:maxPrice IS NULL OR p.price <= :maxPrice) AND " +
@@ -25,7 +25,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             @Param("minPrice") BigDecimal minPrice, @Param("maxPrice") BigDecimal maxPrice,
             @Param("stock") Integer stock, Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.isDeleted = false AND p.stock < :stock")
+    @Query("SELECT p FROM Product p WHERE p.deleted = false AND p.stock < :stock")
     List<Product> findAllProductWithStock(@Param("stock") Integer stock);
 }
 
