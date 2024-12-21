@@ -1,4 +1,4 @@
-package com.project;
+package com.project.database;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
